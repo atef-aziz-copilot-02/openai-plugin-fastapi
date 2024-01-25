@@ -23,6 +23,7 @@ async def openapi_yaml(request: Request):
     openapi = request.app.openapi()
     openapi["servers"] = [{"url": get_host(request)}]
     ai_plugin = get_ai_plugin()
+    openapi["openapi"]="3.0.1"
     openapi["info"]["title"] = ai_plugin["name_for_human"]
     openapi["info"]["description"] = ai_plugin["description_for_human"]
     return Response(
